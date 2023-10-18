@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group = 'User'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    implementation 'ch.qos.logback:logback-classic:1.4.7'
+    implementation 'com.sparkjava:spark-core:2.9.4'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation('org.springframework.boot:spring-boot-starter-web:2.5.5')
+}
+
+task run(type: JavaExec, dependsOn: 'classes') {
+    main = 'User.UserControl' // Replace with your actual package and main class name
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+test {
+    useJUnitPlatform()
+}
